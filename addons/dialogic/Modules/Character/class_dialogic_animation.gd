@@ -49,6 +49,9 @@ func finished_one_loop() -> void:
 
 	else:
 		finished.emit()
+		if node and is_instance_valid(node):
+			if node.has_meta("animation_node") and node.get_meta("animation_node") == self:
+				node.remove_meta("animation_node")
 		queue_free()
 
 

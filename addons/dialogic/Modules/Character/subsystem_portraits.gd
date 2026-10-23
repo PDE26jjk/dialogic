@@ -62,14 +62,26 @@ func _pack_extra_state() -> Dictionary:
 
 func _pause() -> void:
 	for node in character_nodes.values():
-		if node.has_meta('animation_node'):
-			node.get_meta('animation_node').pause()
+		if not is_instance_valid(node) or not node.has_meta('animation_node'):
+			continue
+
+		var animation_node: Variant = node.get_meta('animation_node')
+		if is_instance_valid(animation_node):
+			animation_node.pause()
+		else:
+			node.remove_meta('animation_node')
 
 
 func _resume() -> void:
 	for node in character_nodes.values():
-		if node.has_meta('animation_node'):
-			node.get_meta('animation_node').resume()
+		if not is_instance_valid(node) or not node.has_meta('animation_node'):
+			continue
+
+		var animation_node: Variant = node.get_meta('animation_node')
+		if is_instance_valid(animation_node):
+			animation_node.resume()
+		else:
+			node.remove_meta('animation_node')
 
 
 func _ready() -> void:
