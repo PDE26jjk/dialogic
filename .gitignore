@@ -16,6 +16,7 @@ export_presets.cfg
 # Only add dialogic plugin 
 /addons/*
 !/addons/dialogic
+!/addons/voice_partner
 # Place test project files here
 /test-project
 
